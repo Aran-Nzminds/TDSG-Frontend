@@ -15,7 +15,7 @@
     "typecheck": "tsc -p tsconfig.app.json --noEmit",
     "test": "vitest",
     "test:watch": "vitest --watch",
-    "coverage": "vitest run --coverage"
+    "test:coverage": "vitest run --coverage"
   },
   "lint-staged": {
     "src/**/*.{js,jsx,ts,tsx}": [
