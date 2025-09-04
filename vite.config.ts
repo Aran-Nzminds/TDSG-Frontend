@@ -1,8 +1,13 @@
-import { defineConfig } from 'vite';
-import react from '@vitejs/plugin-react';
+/// <reference types="vitest" />
+/// <reference types="vite/client" />
+
+// import { defineConfig } from 'vite';
+import { defineConfig } from 'vitest/config';
 import Inspect from 'vite-plugin-inspect';
 import { visualizer } from 'rollup-plugin-visualizer';
 import tailwindcss from '@tailwindcss/vite';
+import react from '@vitejs/plugin-react';
+
 export default defineConfig({
   plugins: [
     react(),
@@ -37,7 +42,15 @@ export default defineConfig({
       '@routes': '/src/routes',
     },
   },
-  // build: {
-  //   sourcemap: true,
-  // },
+  build: {
+    sourcemap: true, // Enable source maps for better debugging
+  },
+  test: {
+    globals: true,
+    environment: 'jsdom',
+    setupFiles: './src/setupTests.ts',
+    coverage: {
+      reporter: ['text', 'json', 'html'], // coverage reports
+    },
+  },
 });
