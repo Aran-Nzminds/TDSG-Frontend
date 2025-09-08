@@ -43,6 +43,9 @@ export default defineConfig({
       '@hooks': '/src/hooks',
       '@routes': '/src/routes',
       '@layout': 'src/layout',
+      '@interface': 'src/interface',
+      '@constants': path.resolve(__dirname, './src/constants'),
+
     },
   },
   build: {

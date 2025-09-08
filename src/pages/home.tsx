@@ -1,14 +1,9 @@
-// src/pages/Home.tsx
-import { Card, CardContent, CardHeader, CardTitle } from '@components/ui/card';
 import { Briefcase, Users, BarChart3, Settings } from 'lucide-react';
 
-type CardItem = {
-  title: string;
-  description: string;
-  icon: React.ReactNode;
-};
+import { Card, CardContent, CardHeader, CardTitle } from '@components/ui/card';
+import { ICardItem } from '@interface/common';
 
-const cardItems: CardItem[] = [
+const cardItems: ICardItem[] = [
   {
     title: 'Projects',
     description:
@@ -39,13 +34,10 @@ export default function Home() {
   return (
     <div className="p-10 grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
       {cardItems.map((item, index) => (
-        <Card
-          key={index}
-          className="shadow-md hover:shadow-xl transition-transform hover:scale-105 rounded-2xl border border-gray-100"
-        >
-          <CardHeader className="flex flex-row justify-center items-center gap-3">
+        <Card key={index}>
+          <CardHeader>
             <div className="p-3 rounded-full bg-gray-100">{item.icon}</div>
-            <CardTitle className="text-lg font-semibold">{item.title}</CardTitle>
+            <CardTitle>{item.title}</CardTitle>
           </CardHeader>
           <CardContent>
             <p className="text-gray-600 text-sm">{item.description}</p>

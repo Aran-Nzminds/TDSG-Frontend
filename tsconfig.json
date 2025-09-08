@@ -20,7 +20,9 @@
       "@utils/*": ["src/utils/*"],
       "@hooks/*": ["src/hooks/*"],
       "@routes/*": ["src/routes/*"],
-      "@layout/*": ["src/layout/*"]
+      "@layout/*": ["src/layout/*"],
+      "@interface/*": ["src/interface/*"],
+      "@constants/*": ["src/constants/*"]
     }
   },
   "include": ["src", "vite.config.ts", "vitest.config.ts", "vite-env.d.ts"],

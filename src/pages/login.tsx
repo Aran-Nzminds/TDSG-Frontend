@@ -1,6 +1,7 @@
 import { useMsal } from '@azure/msal-react';
-import { useAuth } from '@hooks/use-auth';
 import { useNavigate } from 'react-router-dom';
+
+import { useAuth } from '@hooks/use-auth';
 import { loginRequest } from '../config/authConfig';
 
 const Login = () => {
@@ -15,8 +16,6 @@ const Login = () => {
       if (response && response.accessToken) {
         // Update auth context + cookie
         login(response.accessToken);
-
-        // Navigate to /home
         navigate('/');
       }
     } catch (e) {
