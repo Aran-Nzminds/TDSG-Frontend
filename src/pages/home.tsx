@@ -32,7 +32,7 @@ const cardItems: ICardItem[] = [
 ];
 
 export default function Home() {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
 
   return (
     <div className="p-10 grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
