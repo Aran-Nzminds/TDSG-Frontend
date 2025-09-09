@@ -2,7 +2,7 @@ import { useMsal } from '@azure/msal-react';
 import { useNavigate } from 'react-router-dom';
 
 import { useAuth } from '@hooks/use-auth';
-import { loginRequest } from '../config/authConfig';
+import { loginRequest } from '../config/auth-config';
 
 const Login = () => {
   const { instance, accounts } = useMsal();

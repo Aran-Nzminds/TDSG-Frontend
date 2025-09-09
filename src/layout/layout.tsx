@@ -1,5 +1,3 @@
-// Layout.tsx
-
 import Navbar from '@components/ui/navbar';
 
 export default function Layout({ children }: { children: React.ReactNode }) {

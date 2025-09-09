@@ -1,6 +1,7 @@
 import Cookies from 'js-cookie';
 import { Link, useNavigate } from 'react-router-dom';
-import { Menu, Search } from 'lucide-react';
+import { Menu, Search, Globe } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
 import { Button } from '@components/ui/button';
 import { DropdownMenu } from '@components/ui/dropdown-menu';
@@ -10,6 +11,7 @@ import { useAuth } from '@hooks/use-auth';
 export default function Navbar() {
   const navigate = useNavigate();
   const { logout } = useAuth();
+  const { t, i18n } = useTranslation();
 
   const handleLogout = () => {
     localStorage.clear();
@@ -23,8 +25,20 @@ export default function Navbar() {
     { label: 'About', to: '/about' },
     { label: 'Services', to: '/services' },
     { label: 'Products', to: '/products' },
-    { label: 'Contact Us', to: '/contact' },
+    { label: 'Contact', to: '/contact' },
   ];
+
+  const LanguageOptions = [
+    { label: 'English', onClick: () => changeLanguage('en') },
+    { label: 'Français', onClick: () => changeLanguage('fr') },
+    { label: 'Deutsch', onClick: () => changeLanguage('de') },
+    { label: '中文', onClick: () => changeLanguage('zh') },
+    { label: '日本語', onClick: () => changeLanguage('ja') },
+  ];
+
+  const changeLanguage = (lang: string) => {
+    i18n.changeLanguage(lang);
+  };
 
   return (
     <nav className="flex items-center justify-between bg-white px-6 md:px-12 py-4 shadow-md border-b">
@@ -42,7 +56,7 @@ export default function Navbar() {
             to={item.to}
             className="text-gray-700 hover:text-blue-600 transition font-medium"
           >
-            {item.label}
+            {t(item.label)}
           </Link>
         ))}
       </div>
@@ -57,7 +71,17 @@ export default function Navbar() {
           />
         </div>
 
-        <Button onClick={handleLogout} className="bg-blue-600 hover:bg-blue-700 text-white">
+        <DropdownMenu
+          trigger={
+            <Button variant="outline" size="sm" className="flex items-center gap-2">
+              <Globe className="h-4 w-4" />
+              {i18n.language.toUpperCase()}
+            </Button>
+          }
+          items={LanguageOptions}
+        />
+
+        <Button onClick={handleLogout} className=" text-white">
           Logout
         </Button>
       </div>

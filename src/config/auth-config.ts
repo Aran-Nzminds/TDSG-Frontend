@@ -1,10 +1,14 @@
 import { Configuration, LogLevel } from '@azure/msal-browser';
 
+const VITE_MICROSOFT_CLIENT_ID = import.meta.env.VITE_MICROSOFT_CLIENT_ID as string;
+const VITE_MICROSOFT_TENANT_ID = import.meta.env.VITE_MICROSOFT_TENANT_ID as string;
+const VITE_REDIRECT_URI = import.meta.env.VITE_REDIRECT_URI as string;
+
 export const msalConfig: Configuration = {
   auth: {
-    clientId: '92ce754c-636e-453c-bca6-18f8e580c8be',
-    authority: 'https://login.microsoftonline.com/1dba69c3-3657-4fb5-ba43-307d3fc6abf9',
-    redirectUri: 'http://localhost:5173',
+    clientId: VITE_MICROSOFT_CLIENT_ID,
+    authority: 'https://login.microsoftonline.com/' + VITE_MICROSOFT_TENANT_ID,
+    redirectUri: VITE_REDIRECT_URI,
   },
   cache: {
     cacheLocation: 'localStorage',

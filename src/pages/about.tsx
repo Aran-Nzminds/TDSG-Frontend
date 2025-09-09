@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useMsal } from '@azure/msal-react';
 
-import { loginRequest } from '../config/authConfig';
+import { loginRequest } from '../config/auth-config';
 import { IUserDetailsProps } from '@interface/auth';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@components/ui/card';
 import { ENDPOINTS } from '@constants/endpoints';

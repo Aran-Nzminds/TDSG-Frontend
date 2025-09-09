@@ -1,4 +1,5 @@
 import { Briefcase, Users, BarChart3, Settings } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
 import { Card, CardContent, CardHeader, CardTitle } from '@components/ui/card';
 import { ICardItem } from '@interface/common';
@@ -31,16 +32,18 @@ const cardItems: ICardItem[] = [
 ];
 
 export default function Home() {
+  const { t, i18n } = useTranslation();
+
   return (
     <div className="p-10 grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
       {cardItems.map((item, index) => (
         <Card key={index}>
           <CardHeader>
             <div className="p-3 rounded-full bg-gray-100">{item.icon}</div>
-            <CardTitle>{item.title}</CardTitle>
+            <CardTitle>{t(item.title)}</CardTitle>
           </CardHeader>
           <CardContent>
-            <p className="text-gray-600 text-sm">{item.description}</p>
+            <p className="text-gray-600 text-sm">{t(item.description)}</p>
           </CardContent>
         </Card>
       ))}

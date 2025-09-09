@@ -42,8 +42,8 @@ export default defineConfig({
       '@utils': '/src/utils',
       '@hooks': '/src/hooks',
       '@routes': '/src/routes',
-      '@layout': 'src/layout',
-      '@interface': 'src/interface',
+      '@layout': '/src/layout',
+      '@interface': '/src/interface',
       '@constants': path.resolve(__dirname, './src/constants'),
 
     },
