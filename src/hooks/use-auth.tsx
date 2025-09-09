@@ -1,15 +1,10 @@
-// src/context/AuthContext.tsx
 import { createContext, useContext, useState, useEffect } from 'react';
-import type { ReactNode } from 'react';
 import Cookies from 'js-cookie';
 
-type AuthContextType = {
-  isAuthenticated: boolean;
-  login: (token?: string) => void;
-  logout: () => void;
-};
+import type { ReactNode } from 'react';
+import { IAuthContextType } from '@interface/auth';
 
-const AuthContext = createContext<AuthContextType | undefined>(undefined);
+const AuthContext = createContext<IAuthContextType | undefined>(undefined);
 
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);

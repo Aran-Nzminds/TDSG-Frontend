@@ -9,4 +9,10 @@ interface IUserDetailsProps {
   preferredLanguage: string | null;
 }
 
-export { IUserDetailsProps };
+interface IAuthContextType {
+  isAuthenticated: boolean;
+  login: (token?: string) => void;
+  logout: () => void;
+}
+
+export { IUserDetailsProps, IAuthContextType };

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useMsal } from '@azure/msal-react';
 
 import { loginRequest } from '../config/authConfig';
@@ -10,7 +10,7 @@ const About = () => {
   const { instance, accounts } = useMsal();
   const [userDetails, setUserDetails] = React.useState<Partial<IUserDetailsProps>>();
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (accounts.length > 0) {
       getProfile();
     }

@@ -1,15 +1,10 @@
-import { Link, useNavigate } from 'react-router-dom';
-import { Button } from '@components/ui/button';
-import { Input } from '@components/ui/input';
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from '@components/ui/dropdown-menu';
-import { Menu, Search } from 'lucide-react';
 import Cookies from 'js-cookie';
+import { Link, useNavigate } from 'react-router-dom';
+import { Menu, Search } from 'lucide-react';
+
+import { Button } from '@components/ui/button';
+import { DropdownMenu } from '@components/ui/dropdown-menu';
+import { Input } from '@components/ui/input';
 import { useAuth } from '@hooks/use-auth';
 
 export default function Navbar() {
@@ -33,7 +28,6 @@ export default function Navbar() {
 
   return (
     <nav className="flex items-center justify-between bg-white px-6 md:px-12 py-4 shadow-md border-b">
-      {/* Brand */}
       <Link
         to="/"
         className="text-2xl font-bold tracking-wide text-blue-600 hover:text-blue-700 transition"
@@ -41,7 +35,6 @@ export default function Navbar() {
         TDSG
       </Link>
 
-      {/* Desktop Menu */}
       <div className="hidden md:flex items-center gap-8">
         {menuItems.map(item => (
           <Link
@@ -54,9 +47,7 @@ export default function Navbar() {
         ))}
       </div>
 
-      {/* Right side (Desktop) */}
       <div className="hidden md:flex items-center gap-4">
-        {/* Search Bar */}
         <div className="relative">
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-400" />
           <Input
@@ -73,22 +64,19 @@ export default function Navbar() {
 
       {/* Mobile Menu */}
       <div className="md:hidden">
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
+        <DropdownMenu
+          trigger={
             <Button variant="ghost" size="icon">
               <Menu className="h-6 w-6 text-gray-700" />
             </Button>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent className="w-48">
-            {menuItems.map(item => (
-              <DropdownMenuItem key={item.to} asChild>
-                <Link to={item.to}>{item.label}</Link>
-              </DropdownMenuItem>
-            ))}
-            <DropdownMenuSeparator />
-            <DropdownMenuItem onClick={handleLogout}>Logout</DropdownMenuItem>
-          </DropdownMenuContent>
-        </DropdownMenu>
+          }
+          items={[
+            { label: 'Home', onClick: () => console.log('Home') },
+            { label: 'About', onClick: () => console.log('About') },
+            { type: 'separator', label: '' },
+            { label: 'Logout', onClick: handleLogout },
+          ]}
+        />
       </div>
     </nav>
   );
