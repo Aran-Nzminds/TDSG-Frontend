@@ -1,4 +1,3 @@
-// src/authConfig.ts
 import { Configuration, LogLevel } from '@azure/msal-browser';
 
 export const msalConfig: Configuration = {
@@ -14,7 +13,7 @@ export const msalConfig: Configuration = {
   system: {
     loggerOptions: {
       loggerCallback: (level: LogLevel, message: string) => {
-        console.log(message,level);
+        console.log(message, level);
       },
       logLevel: LogLevel.Info,
       piiLoggingEnabled: false,
