@@ -8,5 +8,11 @@
   "Settings": "Settings",
   "Projects": "Projects",
   "Users": "Users",
-  "Reports": "Reports"
+  "Reports": "Reports",
+  "Email": "Email",
+  "Phone": "Phone",
+  "Business Phone": "Business Phone",
+  "Job Title": "Job Title",
+  "Office": "Office",
+  "Language": "Language"
 }

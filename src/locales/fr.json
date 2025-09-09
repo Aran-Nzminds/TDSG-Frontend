@@ -8,5 +8,11 @@
   "Settings": "Paramètres",
   "Projects": "Projets",
   "Users": "Utilisateurs",
-  "Reports": "Rapports"
+  "Reports": "Rapports",
+  "Email": "E-mail",
+  "Phone": "Téléphone",
+  "Business Phone": "Téléphone professionnel",
+  "Job Title": "Intitulé du poste",
+  "Office": "Bureau",
+  "Language": "Langue"
 }

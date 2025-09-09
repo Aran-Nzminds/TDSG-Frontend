@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { useMsal } from '@azure/msal-react';
+import { useTranslation } from 'react-i18next';
 
 import { loginRequest } from '../config/auth-config';
 import { IUserDetailsProps } from '@interface/auth';
@@ -9,6 +10,7 @@ import { ENDPOINTS } from '@constants/endpoints';
 const About = () => {
   const { instance, accounts } = useMsal();
   const [userDetails, setUserDetails] = React.useState<Partial<IUserDetailsProps>>();
+  const { t } = useTranslation();
 
   useEffect(() => {
     if (accounts.length > 0) {
@@ -49,27 +51,27 @@ const About = () => {
 
         <CardContent className="mt-6 space-y-4">
           <div className="flex justify-between">
-            <span className="text-gray-500">Email:</span>
+            <span className="text-gray-500">{t('Email')}:</span>
             <span className="font-medium">{userDetails?.mail || '—'}</span>
           </div>
           <div className="flex justify-between">
-            <span className="text-gray-500">Phone:</span>
+            <span className="text-gray-500">{t('Phone')}:</span>
             <span className="font-medium">{userDetails?.mobilePhone || '—'}</span>
           </div>
           <div className="flex justify-between">
-            <span className="text-gray-500">Business Phone:</span>
+            <span className="text-gray-500">{t('Business Phone')}:</span>
             <span className="font-medium">{userDetails?.businessPhones?.[0] || '—'}</span>
           </div>
           <div className="flex justify-between">
-            <span className="text-gray-500">Job Title:</span>
+            <span className="text-gray-500">{t('Job Title')}:</span>
             <span className="font-medium">{userDetails?.jobTitle || '—'}</span>
           </div>
           <div className="flex justify-between">
-            <span className="text-gray-500">Office:</span>
+            <span className="text-gray-500">{t('Office')}:</span>
             <span className="font-medium">{userDetails?.officeLocation || '—'}</span>
           </div>
           <div className="flex justify-between">
-            <span className="text-gray-500">Language:</span>
+            <span className="text-gray-500">{t('Language')}:</span>
             <span className="font-medium">{userDetails?.preferredLanguage || '—'}</span>
           </div>
         </CardContent>

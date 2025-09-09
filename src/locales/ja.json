@@ -8,5 +8,11 @@
   "Settings": "設定",
   "Projects": "プロジェクト",
   "Users": "ユーザー",
-  "Reports": "レポート"
+  "Reports": "レポート",
+  "Email": "メール",
+  "Phone": "電話",
+  "Business Phone": "勤務先電話",
+  "Job Title": "役職",
+  "Office": "オフィス",
+  "Language": "言語"
 }
