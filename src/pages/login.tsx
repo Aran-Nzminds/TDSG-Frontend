@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 
 import { useAuth } from '@hooks/use-auth';
 import { loginRequest } from '../config/auth-config';
+import { handleApiError } from '@utils/axios/error-handler';
 
 const Login = () => {
   const { instance, accounts } = useMsal();
@@ -14,12 +15,11 @@ const Login = () => {
       const response = await instance.loginPopup(loginRequest);
 
       if (response && response.accessToken) {
-        // Update auth context + cookie
         login(response.accessToken);
         navigate('/');
       }
     } catch (e) {
-      console.error('Login failed:', e);
+      handleApiError(e);
     }
   };
 
