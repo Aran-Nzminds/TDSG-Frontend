@@ -95,10 +95,12 @@ export default function Navbar() {
             </Button>
           }
           items={[
-            { label: 'Home', onClick: () => console.log('Home') },
-            { label: 'About', onClick: () => console.log('About') },
+            ...menuItems.map(item => ({
+              label: t(item.label),
+              onClick: () => navigate(item.to),
+            })),
             { type: 'separator', label: '' },
-            { label: 'Logout', onClick: handleLogout },
+            { label: t('Logout'), onClick: handleLogout },
           ]}
         />
       </div>
