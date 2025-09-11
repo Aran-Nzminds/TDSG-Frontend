@@ -25,7 +25,7 @@ export default antfu(
     rules: {
       // TypeScript rules
       'ts/no-redeclare': 'off',
-      'ts/consistent-type-definitions': ['error', 'type'],
+      // 'ts/consistent-type-definitions': ['error', 'type'],
 
       // Console & process
       'no-console': ['warn'],
@@ -60,6 +60,7 @@ export default antfu(
           pathGroupsExcludedImportTypes: ['builtin'],
           'newlines-between': 'always',
           alphabetize: { order: 'asc', caseInsensitive: true },
+          newlinesBetween: "always"
         },
       ],
 
@@ -70,7 +71,6 @@ export default antfu(
           type: 'natural',
           order: 'asc',
           groups: ['builtin', 'external', 'type', 'internal', 'parent', 'sibling', 'index'],
-          'newlines-between': 'always',
         },
       ],
 

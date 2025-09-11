@@ -30,11 +30,13 @@
       "@pages/*": ["src/pages/*"],
       "@lib/*": ["src/lib/*"],
       "@styles/*": ["src/styles/*"],
-      "@types/*": ["src/types/*"],
       "@utils/*": ["src/utils/*"],
       "@hooks/*": ["src/hooks/*"],
       "@routes/*": ["src/routes/*"],
-      "types": ["node"]
+      "types": ["node"],
+      "@layout/*": ["src/layout/*"],
+      "@interface/*": ["src/interface/*"],
+      "@constants/*": ["src/constants/*"]
     }
   },
   "include": ["src"]

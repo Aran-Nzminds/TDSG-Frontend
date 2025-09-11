@@ -1,19 +1,34 @@
-import { createContext, useContext, useState } from 'react';
+import { createContext, useContext, useState, useEffect } from 'react';
+import Cookies from 'js-cookie';
+
 import type { ReactNode } from 'react';
+import { IAuthContextType } from '@interface/auth';
 
-type AuthContextType = {
-  isAuthenticated: boolean;
-  login: () => void;
-  logout: () => void;
-};
-
-const AuthContext = createContext<AuthContextType | undefined>(undefined);
+const AuthContext = createContext<IAuthContextType | undefined>(undefined);
 
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
-  const login = () => setIsAuthenticated(true);
-  const logout = () => setIsAuthenticated(false);
+  useEffect(() => {
+    const storedAuth = Cookies.get('isAuthorized');
+    if (storedAuth === 'true') {
+      setIsAuthenticated(true);
+    }
+  }, []);
+
+  const login = (token?: string) => {
+    setIsAuthenticated(true);
+    Cookies.set('isAuthorized', 'true', { expires: 1 });
+    if (token) {
+      Cookies.set('access_token', token, { secure: true, sameSite: 'Strict' });
+    }
+  };
+
+  const logout = () => {
+    setIsAuthenticated(false);
+    Cookies.remove('isAuthorized');
+    Cookies.remove('access_token');
+  };
 
   return (
     <AuthContext.Provider value={{ isAuthenticated, login, logout }}>
