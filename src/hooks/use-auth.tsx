@@ -1,7 +1,7 @@
 import type { IAuthContextType } from "@interface/auth";
 
 import type { ReactNode } from "react";
-import { createContext, use, useEffect, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import { StorageManager } from "./use-storage";
 
 const AuthContext = createContext<IAuthContextType | undefined>(undefined);
