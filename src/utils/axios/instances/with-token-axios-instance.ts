@@ -1,22 +1,23 @@
-import axios, { AxiosError, InternalAxiosRequestConfig } from 'axios';
-import { getAccessToken, refreshAccessToken, clearTokens } from '../token-service';
-import { handleApiError } from '../error-handler';
+import type { AxiosError, InternalAxiosRequestConfig } from "axios";
+import axios from "axios";
+import { handleApiError } from "../error-handler";
+import { clearTokens, getAccessToken, refreshAccessToken } from "../token-service";
 
-export const createAxiosWithToken = (baseURL: string) => {
+export function createAxiosWithToken(baseURL: string) {
   const instance = axios.create({
     baseURL,
     timeout: 10000,
-    headers: { 'Content-Type': 'application/json' },
+    headers: { "Content-Type": "application/json" },
   });
 
   instance.interceptors.request.use(
     (config: InternalAxiosRequestConfig): InternalAxiosRequestConfig => {
       const token = getAccessToken();
       if (token) {
-        if (typeof (config.headers as any).set === 'function') {
-          (config.headers as any).set('Authorization', `Bearer ${token}`);
+        if (typeof (config.headers as any).set === "function") {
+          (config.headers as any).set("Authorization", `Bearer ${token}`);
         } else {
-          (config.headers as Record<string, string>)['Authorization'] = `Bearer ${token}`;
+          (config.headers as Record<string, string>).Authorization = `Bearer ${token}`;
         }
       }
       return config;
@@ -32,16 +33,16 @@ export const createAxiosWithToken = (baseURL: string) => {
         originalRequest._retry = true;
         const newToken = await refreshAccessToken();
         if (newToken && originalRequest.headers) {
-          if (typeof (originalRequest.headers as any).set === 'function') {
-            (originalRequest.headers as any).set('Authorization', `Bearer ${newToken}`);
+          if (typeof (originalRequest.headers as any).set === "function") {
+            (originalRequest.headers as any).set("Authorization", `Bearer ${newToken}`);
           } else {
-            (originalRequest.headers as Record<string, string>)['Authorization'] =
+            (originalRequest.headers as Record<string, string>).Authorization =
               `Bearer ${newToken}`;
           }
           return instance(originalRequest);
         }
         clearTokens();
-        window.location.href = '/login';
+        window.location.href = "/login";
       }
       handleApiError(error);
       return Promise.reject(error);
@@ -49,4 +50,4 @@ export const createAxiosWithToken = (baseURL: string) => {
   );
 
   return instance;
-};
+}

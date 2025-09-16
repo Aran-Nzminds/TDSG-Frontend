@@ -1,11 +1,11 @@
-import { useCallback } from 'react';
-import Cookies from 'js-cookie';
+import type { IUseStorageOptions, StorageType } from "@interface/common";
+import Cookies from "js-cookie";
 
-import { IUseStorageOptions, StorageType } from '@interface/common';
+import { useCallback } from "react";
 
 type CookieOptions = Parameters<typeof Cookies.set>[2];
 
-export function useStorage(options: IUseStorageOptions = {}) {
+export function StorageManager(options: IUseStorageOptions = {}) {
   const { expires = 7 } = options; // default 7-day cookie expiry
 
   const storageHandlers = {
@@ -37,9 +37,9 @@ export function useStorage(options: IUseStorageOptions = {}) {
   const setStorage = useCallback(
     <T>(type: StorageType, key: string, value: T, cookieOptions?: CookieOptions) => {
       try {
-        const valueToStore = typeof value === 'string' ? value : JSON.stringify(value);
+        const valueToStore = typeof value === "string" ? value : JSON.stringify(value);
 
-        if (type === 'cookie') {
+        if (type === "cookie") {
           storageHandlers.cookie.set(key, valueToStore, cookieOptions);
         } else {
           storageHandlers[type].set(key, valueToStore);
@@ -76,7 +76,7 @@ export function useStorage(options: IUseStorageOptions = {}) {
   const removeStorage = useCallback(
     (type: StorageType, key: string, cookieOptions?: CookieOptions) => {
       try {
-        if (type === 'cookie') {
+        if (type === "cookie") {
           storageHandlers.cookie.remove(key, cookieOptions);
         } else {
           storageHandlers[type].remove(key);
@@ -97,7 +97,7 @@ export function useStorage(options: IUseStorageOptions = {}) {
         Object.keys(storageHandlers).forEach(t => storageHandlers[t as StorageType].clear());
       }
     } catch (error) {
-      console.warn('Error clearing storage:', error);
+      console.warn("Error clearing storage:", error);
     }
   }, []);
 

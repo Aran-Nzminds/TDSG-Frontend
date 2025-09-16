@@ -1,11 +1,11 @@
-import { useMsal } from '@azure/msal-react';
-import { useNavigate } from 'react-router-dom';
+import { useMsal } from "@azure/msal-react";
+import { useAuth } from "@hooks/use-auth";
 
-import { useAuth } from '@hooks/use-auth';
-import { loginRequest } from '../config/auth-config';
-import { handleApiError } from '@utils/axios/error-handler';
+import { handleApiError } from "@utils/axios/error-handler";
+import { useNavigate } from "react-router-dom";
+import { loginRequest } from "../config/auth-config";
 
-const Login = () => {
+function Login() {
   const { instance, accounts } = useMsal();
   const { isAuthenticated, login, logout } = useAuth();
   const navigate = useNavigate();
@@ -16,7 +16,7 @@ const Login = () => {
 
       if (response && response.accessToken) {
         login(response.accessToken);
-        navigate('/');
+        navigate("/");
       }
     } catch (e) {
       handleApiError(e);
@@ -38,7 +38,7 @@ const Login = () => {
         <h1 className="mb-8 text-center text-2xl font-semibold text-gray-600">
           {isAuthenticated && accounts.length > 0
             ? `Welcome, ${accounts[0].username}`
-            : 'Sign in to Continue'}
+            : "Sign in to Continue"}
         </h1>
 
         {/* Buttons */}
@@ -65,11 +65,11 @@ const Login = () => {
 
         {/* Footer */}
         <p className="mt-6 text-center text-sm text-gray-500">
-          By signing in, you agree to our{' '}
+          By signing in, you agree to our{" "}
           <a href="#" className="text-blue-600 hover:underline">
             Terms
-          </a>{' '}
-          and{' '}
+          </a>{" "}
+          and{" "}
           <a href="#" className="text-blue-600 hover:underline">
             Privacy Policy
           </a>
@@ -78,6 +78,6 @@ const Login = () => {
       </div>
     </div>
   );
-};
+}
 
 export default Login;

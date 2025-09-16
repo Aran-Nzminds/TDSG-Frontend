@@ -1,11 +1,11 @@
-import axios from 'axios';
-import { handleApiError } from '../error-handler';
+import axios from "axios";
+import { handleApiError } from "../error-handler";
 
-export const createAxiosWithoutToken = (baseURL: string) => {
+export function createAxiosWithoutToken(baseURL: string) {
   const instance = axios.create({
     baseURL,
     timeout: 10000,
-    headers: { 'Content-Type': 'application/json' },
+    headers: { "Content-Type": "application/json" },
   });
 
   instance.interceptors.response.use(
@@ -17,4 +17,4 @@ export const createAxiosWithoutToken = (baseURL: string) => {
   );
 
   return instance;
-};
+}

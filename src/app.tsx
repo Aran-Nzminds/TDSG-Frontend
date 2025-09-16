@@ -1,11 +1,11 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import './App.css';
-import Home from '@pages/home';
-import NotFound from '@pages/not-found';
-import About from '@pages/about';
-import Login from '@pages/login';
-import { PrivateRoute } from '@routes/private-routes';
-import { PublicRoute } from '@routes/public-routes';
+import About from "@pages/about";
+import Home from "@pages/home";
+import Login from "@pages/login";
+import NotFound from "@pages/not-found";
+import { PrivateRoute } from "@routes/private-routes";
+import { PublicRoute } from "@routes/public-routes";
+import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
+import "./App.css";
 
 function App() {
   return (
@@ -15,8 +15,8 @@ function App() {
           path="/"
           element={
             <PrivateRoute>
-              {' '}
-              <Home />{' '}
+              {" "}
+              <Home />{" "}
             </PrivateRoute>
           }
         />
@@ -24,8 +24,8 @@ function App() {
           path="/about"
           element={
             <PrivateRoute>
-              {' '}
-              <About />{' '}
+              {" "}
+              <About />{" "}
             </PrivateRoute>
           }
         />
