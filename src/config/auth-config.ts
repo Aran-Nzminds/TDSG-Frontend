@@ -1,5 +1,6 @@
-import type { Configuration } from "@azure/msal-browser";
 import { LogLevel } from "@azure/msal-browser";
+
+import type { Configuration } from "@azure/msal-browser";
 
 const VITE_MICROSOFT_CLIENT_ID = import.meta.env.VITE_MICROSOFT_CLIENT_ID as string;
 const VITE_MICROSOFT_TENANT_ID = import.meta.env.VITE_MICROSOFT_TENANT_ID as string;

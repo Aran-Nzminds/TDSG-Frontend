@@ -1,6 +1,8 @@
-import type { Order } from "../services/orders.service";
 // hooks/useOrders.ts
 import { useQuery } from "@tanstack/react-query";
+
+import type { Order } from "../services/orders.service";
+
 import { getOrders } from "../services/orders.service";
 
 export function useOrders() {

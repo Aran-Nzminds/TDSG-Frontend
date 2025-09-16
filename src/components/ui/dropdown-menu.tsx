@@ -1,8 +1,8 @@
-import type { IDropdownProps } from "@interface/common";
 import { cn } from "@lib/utils";
-
 import { Check, Circle } from "lucide-react";
 import * as React from "react";
+
+import type { IDropdownProps } from "@interface/common";
 
 export function DropdownMenu({ trigger, items }: IDropdownProps) {
   const [open, setOpen] = React.useState(false);

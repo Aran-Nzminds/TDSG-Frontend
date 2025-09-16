@@ -23,18 +23,11 @@ export default antfu(
       },
     },
     rules: {
-      // TypeScript rules
       'ts/no-redeclare': 'off',
-      // 'ts/consistent-type-definitions': ['error', 'type'],
-
-      // Console & process
       'no-console': ['warn'],
       'node/prefer-global/process': 'off',
       'node/no-process-env': 'error',
-
-      // Antfu / Unicorn / Perfectionist
       'antfu/no-top-level-await': 'off',
-
       // Import sorting & grouping
       // 'import/order': [
       //   'error',
@@ -65,19 +58,16 @@ export default antfu(
       // ],
 
       // // Sorting with perfectionist
-      // 'perfectionist/sort-imports': [
-      //   'error',
-      //   {
-      //     type: 'natural',
-      //     order: 'asc',
-      //     groups: ['builtin', 'external', 'type', 'internal', 'parent', 'sibling', 'index'],
-      //   },
-      // ],
-
-      // // Enforce <Fragment> instead of <>
-      // 'react/jsx-fragments': ['error', 'element'],
-
-      // Filenames in kebab-case
+      'perfectionist/sort-imports': [
+        'error',
+        {
+          type: 'natural',
+          order: 'asc',
+          groups: ['builtin', 'external', 'type', 'internal', 'parent', 'sibling', 'index'],
+        },
+      ],
+      // Remove this rule as it's causing the error.
+      // 'react/jsx-no-useless-fragment': ['error', { allowExpressions: true }],
       'unicorn/filename-case': [
         'error',
         {
@@ -85,7 +75,6 @@ export default antfu(
           ignore: ['README.md'],
         },
       ],
-
       'max-lines': [
         'error',
         {

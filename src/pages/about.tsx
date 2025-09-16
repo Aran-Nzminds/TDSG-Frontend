@@ -1,10 +1,11 @@
-import type { IUserDetailsProps } from "@interface/auth";
 import { useMsal } from "@azure/msal-react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@components/ui/card";
-
 import { ENDPOINTS } from "@constants/endpoints";
 import React, { useEffect } from "react";
 import { useTranslation } from "react-i18next";
+
+import type { IUserDetailsProps } from "@interface/auth";
+
 import { loginRequest } from "../config/auth-config";
 
 function About() {

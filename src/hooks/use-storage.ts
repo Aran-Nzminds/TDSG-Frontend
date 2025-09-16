@@ -1,7 +1,7 @@
-import type { IUseStorageOptions, StorageType } from "@interface/common";
 import Cookies from "js-cookie";
-
 import { useCallback } from "react";
+
+import type { IUseStorageOptions, StorageType } from "@interface/common";
 
 type CookieOptions = Parameters<typeof Cookies.set>[2];
 

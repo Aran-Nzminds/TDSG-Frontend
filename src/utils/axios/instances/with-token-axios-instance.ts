@@ -1,5 +1,7 @@
-import type { AxiosError, InternalAxiosRequestConfig } from "axios";
 import axios from "axios";
+
+import type { AxiosError, InternalAxiosRequestConfig } from "axios";
+
 import { handleApiError } from "../error-handler";
 import { clearTokens, getAccessToken, refreshAccessToken } from "../token-service";
 

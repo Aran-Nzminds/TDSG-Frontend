@@ -1,8 +1,8 @@
-import type { ICardItem } from "@interface/common";
 import { Card, CardContent, CardHeader, CardTitle } from "@components/ui/card";
-
 import { BarChart3, Briefcase, Settings, Users } from "lucide-react";
 import { useTranslation } from "react-i18next";
+
+import type { ICardItem } from "@interface/common";
 
 const cardItems: ICardItem[] = [
   {

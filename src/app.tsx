@@ -5,6 +5,7 @@ import NotFound from "@pages/not-found";
 import { PrivateRoute } from "@routes/private-routes";
 import { PublicRoute } from "@routes/public-routes";
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
+
 import "./App.css";
 
 function App() {

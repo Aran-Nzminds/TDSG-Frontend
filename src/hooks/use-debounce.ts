@@ -1,6 +1,6 @@
-import type { IUseDebounceOptions } from "@interface/common";
-
 import { useCallback, useEffect, useRef, useState } from "react";
+
+import type { IUseDebounceOptions } from "@interface/common";
 
 export function useDebounce<T>(value: T, options: IUseDebounceOptions = {}): [T, () => void] {
   const { delay = 300, immediate = false } = options;
