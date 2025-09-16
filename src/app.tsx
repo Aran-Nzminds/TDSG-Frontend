@@ -15,8 +15,7 @@ function App() {
           path="/"
           element={
             <PrivateRoute>
-              {" "}
-              <Home />{" "}
+              <Home />
             </PrivateRoute>
           }
         />
@@ -24,8 +23,7 @@ function App() {
           path="/about"
           element={
             <PrivateRoute>
-              {" "}
-              <About />{" "}
+              <About />
             </PrivateRoute>
           }
         />
