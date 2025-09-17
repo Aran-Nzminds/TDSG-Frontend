@@ -1,20 +1,20 @@
-import antfu from '@antfu/eslint-config';
-import globals from 'globals';
+import antfu from "@antfu/eslint-config";
+import globals from "globals";
 
 export default antfu(
   {
-    type: 'app',
+    type: "app",
     react: true,
     typescript: true,
     formatters: true,
     stylistic: {
       indent: 2,
       semi: true,
-      quotes: 'double',
+      quotes: "double",
     },
   },
   {
-    ignores: ['dist', 'node_modules', '.turbo', '.next', 'coverage', '*.min.js'],
+    ignores: ["dist", "node_modules", ".turbo", ".next", "coverage", "*.min.js"],
     languageOptions: {
       ecmaVersion: 2020,
       globals: {
@@ -23,11 +23,11 @@ export default antfu(
       },
     },
     rules: {
-      'ts/no-redeclare': 'off',
-      'no-console': ['warn'],
-      'node/prefer-global/process': 'off',
-      'node/no-process-env': 'error',
-      'antfu/no-top-level-await': 'off',
+      "ts/no-redeclare": "off",
+      "no-console": ["warn"],
+      "node/prefer-global/process": "off",
+      "node/no-process-env": "error",
+      "antfu/no-top-level-await": "off",
       // Import sorting & grouping
       // 'import/order': [
       //   'error',
@@ -58,25 +58,25 @@ export default antfu(
       // ],
 
       // // Sorting with perfectionist
-      'perfectionist/sort-imports': [
-        'error',
+      "perfectionist/sort-imports": [
+        "error",
         {
-          type: 'natural',
-          order: 'asc',
-          groups: ['builtin', 'external', 'type', 'internal', 'parent', 'sibling', 'index'],
+          type: "natural",
+          order: "asc",
+          groups: ["builtin", "external", "type", "internal", "parent", "sibling", "index"],
         },
       ],
       // Remove this rule as it's causing the error.
       // 'react/jsx-no-useless-fragment': ['error', { allowExpressions: true }],
-      'unicorn/filename-case': [
-        'error',
+      "unicorn/filename-case": [
+        "error",
         {
-          case: 'kebabCase',
-          ignore: ['README.md'],
+          case: "kebabCase",
+          ignore: ["README.md"],
         },
       ],
-      'max-lines': [
-        'error',
+      "max-lines": [
+        "error",
         {
           max: 200,
           skipBlankLines: true,
