@@ -18,7 +18,8 @@ export function createAxiosWithToken(baseURL: string) {
       if (token) {
         if (typeof (config.headers as any).set === "function") {
           (config.headers as any).set("Authorization", `Bearer ${token}`);
-        } else {
+        }
+        else {
           (config.headers as Record<string, string>).Authorization = `Bearer ${token}`;
         }
       }
@@ -37,9 +38,10 @@ export function createAxiosWithToken(baseURL: string) {
         if (newToken && originalRequest.headers) {
           if (typeof (originalRequest.headers as any).set === "function") {
             (originalRequest.headers as any).set("Authorization", `Bearer ${newToken}`);
-          } else {
-            (originalRequest.headers as Record<string, string>).Authorization =
-              `Bearer ${newToken}`;
+          }
+          else {
+            (originalRequest.headers as Record<string, string>).Authorization
+              = `Bearer ${newToken}`;
           }
           return instance(originalRequest);
         }

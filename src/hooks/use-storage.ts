@@ -41,10 +41,12 @@ export function StorageManager(options: IUseStorageOptions = {}) {
 
         if (type === "cookie") {
           storageHandlers.cookie.set(key, valueToStore, cookieOptions);
-        } else {
+        }
+        else {
           storageHandlers[type].set(key, valueToStore);
         }
-      } catch (error) {
+      }
+      catch (error) {
         console.warn(`Error setting ${type} storage key "${key}":`, error);
       }
     },
@@ -56,15 +58,18 @@ export function StorageManager(options: IUseStorageOptions = {}) {
     <T>(type: StorageType, key: string, defaultValue?: T): T | undefined => {
       try {
         const item = storageHandlers[type].get(key);
-        if (item === undefined || item === null) return defaultValue;
+        if (item === undefined || item === null)
+          return defaultValue;
 
         // Attempt to parse JSON, fallback to string
         try {
           return JSON.parse(item) as T;
-        } catch {
+        }
+        catch {
           return item as unknown as T;
         }
-      } catch (error) {
+      }
+      catch (error) {
         console.warn(`Error reading ${type} storage key "${key}":`, error);
         return defaultValue;
       }
@@ -78,10 +83,12 @@ export function StorageManager(options: IUseStorageOptions = {}) {
       try {
         if (type === "cookie") {
           storageHandlers.cookie.remove(key, cookieOptions);
-        } else {
+        }
+        else {
           storageHandlers[type].remove(key);
         }
-      } catch (error) {
+      }
+      catch (error) {
         console.warn(`Error removing ${type} storage key "${key}":`, error);
       }
     },
@@ -93,10 +100,12 @@ export function StorageManager(options: IUseStorageOptions = {}) {
     try {
       if (type) {
         storageHandlers[type].clear();
-      } else {
+      }
+      else {
         Object.keys(storageHandlers).forEach(t => storageHandlers[t as StorageType].clear());
       }
-    } catch (error) {
+    }
+    catch (error) {
       console.warn("Error clearing storage:", error);
     }
   }, []);

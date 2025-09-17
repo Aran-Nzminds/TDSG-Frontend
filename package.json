@@ -1,8 +1,8 @@
 {
   "name": "tdsg",
-  "private": true,
-  "version": "0.0.0",
   "type": "module",
+  "version": "0.0.0",
+  "private": true,
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
@@ -16,15 +16,6 @@
     "test": "vitest",
     "test:watch": "vitest --watch",
     "test:coverage": "vitest run --coverage"
-  },
-  "lint-staged": {
-    "src/**/*.{js,jsx,ts,tsx}": [
-      "eslint --fix",
-      "prettier --write"
-    ],
-    "src/**/*.{css,scss}": [
-      "prettier --write"
-    ]
   },
   "dependencies": {
     "@azure/msal-browser": "^4.22.0",
@@ -96,5 +87,9 @@
     "vite": "^7.1.5",
     "vite-plugin-inspect": "^11.3.2",
     "vitest": "^3.2.4"
+  },
+  "lint-staged": {
+    "src/**/*.{js,jsx,ts,tsx}": "eslint --fix",
+    "src/**/*.{css,scss,md,json}": "prettier --write"
   }
 }

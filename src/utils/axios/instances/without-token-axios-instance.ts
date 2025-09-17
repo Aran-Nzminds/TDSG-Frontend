@@ -11,7 +11,7 @@ export function createAxiosWithoutToken(baseURL: string) {
 
   instance.interceptors.response.use(
     response => response,
-    error => {
+    (error) => {
       handleApiError(error);
       return Promise.reject(error);
     },

@@ -52,27 +52,45 @@ function About() {
 
         <CardContent className="mt-6 space-y-4">
           <div className="flex justify-between">
-            <span className="text-gray-500">{t("Email")}:</span>
+            <span className="text-gray-500">
+              {t("Email")}
+              :
+            </span>
             <span className="font-medium">{userDetails?.mail || "—"}</span>
           </div>
           <div className="flex justify-between">
-            <span className="text-gray-500">{t("Phone")}:</span>
+            <span className="text-gray-500">
+              {t("Phone")}
+              :
+            </span>
             <span className="font-medium">{userDetails?.mobilePhone || "—"}</span>
           </div>
           <div className="flex justify-between">
-            <span className="text-gray-500">{t("Business Phone")}:</span>
+            <span className="text-gray-500">
+              {t("Business Phone")}
+              :
+            </span>
             <span className="font-medium">{userDetails?.businessPhones?.[0] || "—"}</span>
           </div>
           <div className="flex justify-between">
-            <span className="text-gray-500">{t("Job Title")}:</span>
+            <span className="text-gray-500">
+              {t("Job Title")}
+              :
+            </span>
             <span className="font-medium">{userDetails?.jobTitle || "—"}</span>
           </div>
           <div className="flex justify-between">
-            <span className="text-gray-500">{t("Office")}:</span>
+            <span className="text-gray-500">
+              {t("Office")}
+              :
+            </span>
             <span className="font-medium">{userDetails?.officeLocation || "—"}</span>
           </div>
           <div className="flex justify-between">
-            <span className="text-gray-500">{t("Language")}:</span>
+            <span className="text-gray-500">
+              {t("Language")}
+              :
+            </span>
             <span className="font-medium">{userDetails?.preferredLanguage || "—"}</span>
           </div>
         </CardContent>

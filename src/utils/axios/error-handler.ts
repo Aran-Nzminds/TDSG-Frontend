@@ -10,12 +10,15 @@ export function handleApiError(error: unknown) {
     if (error.response) {
       console.error(`Status: ${error.response.status}`);
       console.error("Response data:", error.response.data);
-    } else if (error.request) {
+    }
+    else if (error.request) {
       console.error("No response received:", error.request);
-    } else {
+    }
+    else {
       console.error("Axios error message:", error.message);
     }
-  } else {
+  }
+  else {
     console.error("Unexpected error:", error);
   }
 }

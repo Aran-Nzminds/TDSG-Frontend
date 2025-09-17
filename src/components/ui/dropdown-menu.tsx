@@ -21,28 +21,30 @@ export function DropdownMenu({ trigger, items }: IDropdownProps) {
         >
           <div className="py-1">
             {items.map((item, idx) =>
-              item.type === "separator" ? (
-                <div key={idx} className="my-1 border-t border-gray-200" />
-              ) : (
-                <div
-                  key={idx}
-                  onClick={() => {
-                    item.onClick?.();
-                    setOpen(false);
-                  }}
-                  className={cn(
-                    "flex w-full items-center gap-2 px-3 py-2 text-sm text-gray-700 text-left hover:bg-gray-100",
-                    item.disabled && "opacity-50 cursor-not-allowed",
-                  )}
-                >
-                  {item.type === "checkbox" && item.checked && <Check className="h-4 w-4" />}
-                  {item.type === "radio" && item.checked && (
-                    <Circle className="h-2 w-2 fill-current" />
-                  )}
-                  {item.icon}
-                  {item.label}
-                </div>
-              ),
+              item.type === "separator"
+                ? (
+                    <div key={idx} className="my-1 border-t border-gray-200" />
+                  )
+                : (
+                    <div
+                      key={idx}
+                      onClick={() => {
+                        item.onClick?.();
+                        setOpen(false);
+                      }}
+                      className={cn(
+                        "flex w-full items-center gap-2 px-3 py-2 text-sm text-gray-700 text-left hover:bg-gray-100",
+                        item.disabled && "opacity-50 cursor-not-allowed",
+                      )}
+                    >
+                      {item.type === "checkbox" && item.checked && <Check className="h-4 w-4" />}
+                      {item.type === "radio" && item.checked && (
+                        <Circle className="h-2 w-2 fill-current" />
+                      )}
+                      {item.icon}
+                      {item.label}
+                    </div>
+                  ),
             )}
           </div>
         </div>

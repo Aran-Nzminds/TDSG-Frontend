@@ -35,13 +35,15 @@ export function clearTokens() {
 // ! Need to change the endpoint
 export async function refreshAccessToken(): Promise<string | null> {
   const refreshToken = getRefreshToken();
-  if (!refreshToken) return null;
+  if (!refreshToken)
+    return null;
   try {
     const response = await axios.post(`${API_BASE_URLS.auth}/auth/refresh`, { refreshToken });
     setAccessToken(response.data.accessToken);
     setRefreshToken(response.data.refreshToken);
     return response.data.accessToken as string;
-  } catch (error) {
+  }
+  catch (error) {
     clearTokens();
     return (error as undefined) || null;
   }

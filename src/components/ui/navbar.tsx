@@ -72,12 +72,12 @@ export default function Navbar() {
         </div>
 
         <DropdownMenu
-          trigger={
+          trigger={(
             <Button variant="outline" size="sm" className="flex items-center gap-2">
               <Globe className="h-4 w-4" />
               {i18n.language.toUpperCase()}
             </Button>
-          }
+          )}
           items={LanguageOptions}
         />
 
@@ -89,11 +89,11 @@ export default function Navbar() {
       {/* Mobile Menu */}
       <div className="md:hidden">
         <DropdownMenu
-          trigger={
+          trigger={(
             <Button variant="ghost" size="icon">
               <Menu className="h-6 w-6 text-gray-700" />
             </Button>
-          }
+          )}
           items={[
             ...menuItems.map(item => ({
               label: t(item.label),

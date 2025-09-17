@@ -14,35 +14,35 @@ function App() {
       <Routes>
         <Route
           path="/"
-          element={
+          element={(
             <PrivateRoute>
               <Home />
             </PrivateRoute>
-          }
+          )}
         />
         <Route
           path="/about"
-          element={
+          element={(
             <PrivateRoute>
               <About />
             </PrivateRoute>
-          }
+          )}
         />
         <Route
           path="/login"
-          element={
+          element={(
             <PublicRoute>
               <Login />
             </PublicRoute>
-          }
+          )}
         />
         <Route
           path="*"
-          element={
+          element={(
             <PublicRoute>
               <NotFound />
             </PublicRoute>
-          }
+          )}
         />
       </Routes>
     </Router>

@@ -14,7 +14,8 @@ export function OrdersPage() {
   //     retry: 2,             // retry failed requests
   //     staleTime: 1000 * 60, // cache fresh for 1 minute
   //   });
-  if (isLoading) return <div>Loading orders...</div>;
+  if (isLoading)
+    return <div>Loading orders...</div>;
   if (isError) {
     return (
       <div>
@@ -28,7 +29,15 @@ export function OrdersPage() {
     <div>
       {orders.map(o => (
         <div key={o.id}>
-          Order #{o.id} - {o.status} - ${o.total}
+          Order #
+          {o.id}
+          {" "}
+          -
+          {" "}
+          {o.status}
+          {" "}
+          - $
+          {o.total}
         </div>
       ))}
 

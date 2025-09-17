@@ -18,7 +18,8 @@ function Login() {
         login(response.accessToken);
         navigate("/");
       }
-    } catch (e) {
+    }
+    catch (e) {
       handleApiError(e);
     }
   };
@@ -42,34 +43,39 @@ function Login() {
         </h1>
 
         {/* Buttons */}
-        {accounts.length > 0 && isAuthenticated ? (
-          <button
-            onClick={logout}
-            className="w-full rounded-lg bg-red-500 px-4 py-3 font-medium text-white shadow-md transition hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-300"
-          >
-            Logout
-          </button>
-        ) : (
-          <button
-            onClick={handleLogin}
-            className="flex w-full items-center justify-center gap-2 rounded-lg bg-blue-600 px-4 py-3 font-medium text-white shadow-md transition hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-300"
-          >
-            <img
-              src="https://img.icons8.com/color/48/microsoft.png"
-              alt="Microsoft"
-              className="h-5 w-5"
-            />
-            <span>Sign in with Microsoft</span>
-          </button>
-        )}
+        {accounts.length > 0 && isAuthenticated
+          ? (
+              <button
+                onClick={logout}
+                className="w-full rounded-lg bg-red-500 px-4 py-3 font-medium text-white shadow-md transition hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-300"
+              >
+                Logout
+              </button>
+            )
+          : (
+              <button
+                onClick={handleLogin}
+                className="flex w-full items-center justify-center gap-2 rounded-lg bg-blue-600 px-4 py-3 font-medium text-white shadow-md transition hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-300"
+              >
+                <img
+                  src="https://img.icons8.com/color/48/microsoft.png"
+                  alt="Microsoft"
+                  className="h-5 w-5"
+                />
+                <span>Sign in with Microsoft</span>
+              </button>
+            )}
 
         {/* Footer */}
         <p className="mt-6 text-center text-sm text-gray-500">
-          By signing in, you agree to our{" "}
+          By signing in, you agree to our
+          {" "}
           <a href="#" className="text-blue-600 hover:underline">
             Terms
-          </a>{" "}
-          and{" "}
+          </a>
+          {" "}
+          and
+          {" "}
           <a href="#" className="text-blue-600 hover:underline">
             Privacy Policy
           </a>
