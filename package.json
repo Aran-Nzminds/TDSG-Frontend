@@ -1,11 +1,13 @@
 {
-  "name": "tdsg",
+  "name": "tdsg-frontend",
   "type": "module",
   "version": "0.0.0",
   "private": true,
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
+    "build:local": "tsc -b && vite build --outDir build",
+    "build:ci": "npm run build",
     "lint": "eslint \"src/**/*.{ts,tsx}\" --quiet",
     "lint:fix": "eslint \"src/**/*.{ts,tsx}\" --fix",
     "format": "prettier --write \"src/**/*.{ts,tsx,js,jsx,json,css,md}\"",
