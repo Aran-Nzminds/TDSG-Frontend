@@ -5,6 +5,31 @@ import type { AxiosError, InternalAxiosRequestConfig } from "axios";
 import { handleApiError } from "../error-handler";
 import { clearTokens, getAccessToken, refreshAccessToken } from "../token-service";
 
+let encryptionKey: CryptoKey | null = null;
+
+async function getEncryptionKey(): Promise<CryptoKey> {
+  if (!encryptionKey) {
+    encryptionKey = await crypto.subtle.generateKey({ name: "AES-GCM", length: 256 }, true, [
+      "encrypt",
+      "decrypt",
+    ]);
+  }
+  return encryptionKey;
+}
+
+async function encryptPayload(payload: any, key: CryptoKey) {
+  const encoder = new TextEncoder();
+  const iv = crypto.getRandomValues(new Uint8Array(12));
+  const encoded = encoder.encode(JSON.stringify(payload));
+
+  const ciphertext = await crypto.subtle.encrypt({ name: "AES-GCM", iv }, key, encoded);
+
+  return {
+    iv: Array.from(iv),
+    data: btoa(String.fromCharCode(...new Uint8Array(ciphertext))),
+  };
+}
+
 export function createAxiosWithToken(baseURL: string) {
   const instance = axios.create({
     baseURL,
@@ -13,16 +38,19 @@ export function createAxiosWithToken(baseURL: string) {
   });
 
   instance.interceptors.request.use(
-    (config: InternalAxiosRequestConfig): InternalAxiosRequestConfig => {
+    async (config: InternalAxiosRequestConfig): Promise<InternalAxiosRequestConfig> => {
       const token = getAccessToken();
       if (token) {
-        if (typeof (config.headers as any).set === "function") {
-          (config.headers as any).set("Authorization", `Bearer ${token}`);
-        }
-        else {
-          (config.headers as Record<string, string>).Authorization = `Bearer ${token}`;
-        }
+        (config.headers as Record<string, string>).Authorization = `Bearer ${token}`;
       }
+
+      // Encrypt request body
+      if (config.data) {
+        const key = await getEncryptionKey();
+        const encrypted = await encryptPayload(config.data, key);
+        config.data = encrypted;
+      }
+
       return config;
     },
     error => Promise.reject(error),
@@ -36,13 +64,7 @@ export function createAxiosWithToken(baseURL: string) {
         originalRequest._retry = true;
         const newToken = await refreshAccessToken();
         if (newToken && originalRequest.headers) {
-          if (typeof (originalRequest.headers as any).set === "function") {
-            (originalRequest.headers as any).set("Authorization", `Bearer ${newToken}`);
-          }
-          else {
-            (originalRequest.headers as Record<string, string>).Authorization
-              = `Bearer ${newToken}`;
-          }
+          (originalRequest.headers as Record<string, string>).Authorization = `Bearer ${newToken}`;
           return instance(originalRequest);
         }
         clearTokens();
