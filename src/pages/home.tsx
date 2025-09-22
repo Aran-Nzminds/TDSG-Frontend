@@ -40,7 +40,7 @@ export default function Home() {
         <Card key={index}>
           <CardHeader>
             <div className="p-3 rounded-full bg-gray-100">{item.icon}</div>
-            <CardTitle>{t(item.title)}</CardTitle>
+            <CardTitle role="heading">{t(item.title)}</CardTitle>
           </CardHeader>
           <CardContent>
             <p className="text-gray-600 text-sm">{t(item.description)}</p>
